@@ -139,18 +139,19 @@ function fetchUsers(url) {
   }, null, null, [[0, 9]]);
 }
 
-function chartUsers() {
-  fetchUsers("https://jsonplaceholder.typicode.com/users").then(function (res) {
+function renderGraph() {
+  fetchUsers("https://restcountries.eu/rest/v2/region/africa").then(function (res) {
     var data = [];
     var label = [];
     res.forEach(function (el) {
-      data.push(el.id);
+      data.push(el.population);
       label.push(el.name);
+      console.table(el);
     });
     var graphData = {
       labels: label,
       datasets: [{
-        label: "Users in the system",
+        label: "Population of African Countries",
         backgroundColor: "#49e2ff",
         borderColor: "#46d5f1",
         hoverBackgroundColor: "#CCCCCC",
@@ -161,13 +162,28 @@ function chartUsers() {
     var ctx = document.getElementById("myChart").getContext("2d");
     var chart = new chart_js__WEBPACK_IMPORTED_MODULE_2___default.a(ctx, {
       type: "bar",
-      data: graphData
+      data: graphData,
+      //
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              autoSkip: false
+            }
+          }]
+        }
+      }
     });
   });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  chartUsers();
+  renderGraph();
 });
 
 /***/ }),

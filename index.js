@@ -10,21 +10,22 @@ async function fetchUsers(url) {
   }
 }
 
-function chartUsers() {
-  fetchUsers("https://jsonplaceholder.typicode.com/users").then(res => {
+function renderGraph() {
+  fetchUsers("https://restcountries.eu/rest/v2/region/africa").then(res => {
     const data = [];
     const label = [];
 
     res.forEach(el => {
-      data.push(el.id);
+      data.push(el.population);
       label.push(el.name);
+      console.table(el);
     });
 
     const graphData = {
       labels: label,
       datasets: [
         {
-          label: "Users in the system",
+          label: "Population of African Countries",
           backgroundColor: "#49e2ff",
           borderColor: "#46d5f1",
           hoverBackgroundColor: "#CCCCCC",
@@ -38,11 +39,30 @@ function chartUsers() {
 
     const chart = new Chart(ctx, {
       type: "bar",
-      data: graphData
+      data: graphData,
+      //
+      options: {
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true
+              }
+            }
+          ],
+          xAxes: [
+            {
+              ticks: {
+                autoSkip: false
+              }
+            }
+          ]
+        }
+      }
     });
   });
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  chartUsers();
+  renderGraph();
 });
