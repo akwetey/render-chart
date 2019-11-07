@@ -159,11 +159,41 @@ function renderGraph() {
         data: data
       }]
     };
+    var graphData1 = {
+      labels: label,
+      datasets: [{
+        label: "Population of African Countries",
+        backgroundColor: "rgb(244, 100, 95)",
+        borderColor: "rgb(244, 100, 95)",
+        hoverBackgroundColor: "rgb(8, 8, 8)",
+        hoverBorderColor: "rgb(8, 8, 8)",
+        data: data
+      }]
+    };
     var ctx = document.getElementById("myChart").getContext("2d");
+    var ctx1 = document.getElementById("myChart1").getContext("2d");
     var chart = new chart_js__WEBPACK_IMPORTED_MODULE_2___default.a(ctx, {
       type: "bar",
       data: graphData,
       //
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              autoSkip: false
+            }
+          }]
+        }
+      }
+    });
+    var pie = new chart_js__WEBPACK_IMPORTED_MODULE_2___default.a(ctx1, {
+      type: "line",
+      data: graphData1,
       options: {
         scales: {
           yAxes: [{

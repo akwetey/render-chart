@@ -34,13 +34,49 @@ function renderGraph() {
         }
       ]
     };
+    const graphData1 = {
+      labels: label,
+      datasets: [
+        {
+          label: "Population of African Countries",
+          backgroundColor: "rgb(244, 100, 95)",
+          borderColor: "rgb(244, 100, 95)",
+          hoverBackgroundColor: "rgb(8, 8, 8)",
+          hoverBorderColor: "rgb(8, 8, 8)",
+          data: data
+        }
+      ]
+    };
 
     const ctx = document.getElementById("myChart").getContext("2d");
+    const ctx1 = document.getElementById("myChart1").getContext("2d");
 
     const chart = new Chart(ctx, {
       type: "bar",
       data: graphData,
       //
+      options: {
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true
+              }
+            }
+          ],
+          xAxes: [
+            {
+              ticks: {
+                autoSkip: false
+              }
+            }
+          ]
+        }
+      }
+    });
+    const pie = new Chart(ctx1, {
+      type: "line",
+      data: graphData1,
       options: {
         scales: {
           yAxes: [
