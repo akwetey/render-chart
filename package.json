@@ -13,7 +13,7 @@
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Akwetey",
   "license": "ISC",
   "devDependencies": {
     "cross-env": "^6.0.3",
@@ -26,7 +26,6 @@
   "dependencies": {
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
-    "chart.js": "^2.9.2",
-    "jquery": "^3.4.1"
+    "chart.js": "^2.9.2"
   }
 }
