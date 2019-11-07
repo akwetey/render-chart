@@ -105,9 +105,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function fetchUsers(url) {
+function fetchCountries(url) {
   var response;
-  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function fetchUsers$(_context) {
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function fetchCountries$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
@@ -140,7 +140,7 @@ function fetchUsers(url) {
 }
 
 function renderGraph() {
-  fetchUsers("https://restcountries.eu/rest/v2/region/africa").then(function (res) {
+  fetchCountries("https://restcountries.eu/rest/v2/region/africa").then(function (res) {
     var data = [];
     var label = [];
     res.forEach(function (el) {

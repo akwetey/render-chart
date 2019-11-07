@@ -1,7 +1,7 @@
 import axios from "axios";
 import Chart from "chart.js";
 
-async function fetchUsers(url) {
+async function fetchCountries(url) {
   try {
     const response = await axios.get(url);
     return await response.data;
@@ -11,7 +11,7 @@ async function fetchUsers(url) {
 }
 
 function renderGraph() {
-  fetchUsers("https://restcountries.eu/rest/v2/region/africa").then(res => {
+  fetchCountries("https://restcountries.eu/rest/v2/region/africa").then(res => {
     const data = [];
     const label = [];
 
