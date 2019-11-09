@@ -146,12 +146,11 @@ function renderGraph() {
     res.forEach(function (el) {
       data.push(el.population);
       label.push(el.name);
-      console.table(el);
     });
     var graphData = {
       labels: label,
       datasets: [{
-        label: "Population of African Countries",
+        label: "Population",
         backgroundColor: "#49e2ff",
         borderColor: "#46d5f1",
         hoverBackgroundColor: "#CCCCCC",
@@ -162,7 +161,7 @@ function renderGraph() {
     var graphData1 = {
       labels: label,
       datasets: [{
-        label: "Population of African Countries",
+        label: "Population",
         backgroundColor: "rgb(244, 100, 95)",
         borderColor: "rgb(244, 100, 95)",
         hoverBackgroundColor: "rgb(8, 8, 8)",
