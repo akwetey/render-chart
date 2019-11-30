@@ -144,6 +144,7 @@ function renderGraph() {
     var data = [];
     var label = [];
     res.forEach(function (el) {
+      console.log(el.population.toLocaleString());
       data.push(el.population);
       label.push(el.name);
     });
@@ -187,6 +188,13 @@ function renderGraph() {
               autoSkip: false
             }
           }]
+        },
+        tooltips: {
+          callbacks: {
+            label: function label(tooltipItem) {
+              return tooltipItem.yLabel.toLocaleString();
+            }
+          }
         }
       }
     });
@@ -205,6 +213,13 @@ function renderGraph() {
               autoSkip: false
             }
           }]
+        },
+        tooltips: {
+          callbacks: {
+            label: function label(tooltipItem) {
+              return tooltipItem.yLabel.toLocaleString();
+            }
+          }
         }
       }
     });

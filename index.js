@@ -16,6 +16,7 @@ function renderGraph() {
     const label = [];
 
     res.forEach(el => {
+      console.log(el.population.toLocaleString());
       data.push(el.population);
       label.push(el.name);
     });
@@ -70,6 +71,13 @@ function renderGraph() {
               }
             }
           ]
+        },
+        tooltips: {
+          callbacks: {
+            label: function(tooltipItem) {
+              return tooltipItem.yLabel.toLocaleString();
+            }
+          }
         }
       }
     });
@@ -92,6 +100,13 @@ function renderGraph() {
               }
             }
           ]
+        },
+        tooltips: {
+          callbacks: {
+            label: function(tooltipItem) {
+              return tooltipItem.yLabel.toLocaleString();
+            }
+          }
         }
       }
     });
