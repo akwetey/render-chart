@@ -1,5 +1,6 @@
 import axios from "axios";
 import Chart from "chart.js";
+const randomColor = require("randomcolor");
 
 async function fetchCountries(url) {
   try {
@@ -14,11 +15,19 @@ function renderGraph() {
   fetchCountries("https://restcountries.eu/rest/v2/region/africa").then(res => {
     const data = [];
     const label = [];
+    const bg = [];
 
     res.forEach(el => {
       console.log(el.population.toLocaleString());
       data.push(el.population);
       label.push(el.name);
+      bg.push(
+        randomColor({
+          luminosity: "bright",
+          format: "rgba",
+          alpha: 0.5
+        })
+      );
     });
 
     const graphData = {
@@ -26,10 +35,7 @@ function renderGraph() {
       datasets: [
         {
           label: "Population",
-          backgroundColor: "#49e2ff",
-          borderColor: "#46d5f1",
-          hoverBackgroundColor: "#CCCCCC",
-          hoverBorderColor: "#666666",
+          backgroundColor: bg,
           data: data
         }
       ]
@@ -39,10 +45,7 @@ function renderGraph() {
       datasets: [
         {
           label: "Population",
-          backgroundColor: "rgb(244, 100, 95)",
-          borderColor: "rgb(244, 100, 95)",
-          hoverBackgroundColor: "rgb(8, 8, 8)",
-          hoverBorderColor: "rgb(8, 8, 8)",
+          backgroundColor: bg,
           data: data
         }
       ]
