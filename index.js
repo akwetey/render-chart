@@ -1,5 +1,6 @@
 import axios from "axios";
 import Chart from "chart.js";
+import jsPDF from "jspdf";
 const randomColor = require("randomcolor");
 
 async function fetchCountries(url) {
@@ -18,7 +19,6 @@ function renderGraph() {
     const bg = [];
 
     res.forEach(el => {
-      console.log(el.population.toLocaleString());
       data.push(el.population);
       label.push(el.name);
       bg.push(
@@ -116,6 +116,24 @@ function renderGraph() {
   });
 }
 
+const pdfFunction = () => {
+  const pdf = new jsPDF("landscape");
+  const myChartNode = document.querySelectorAll(".chart");
+  for (let i = 0; i < myChartNode.length; i++) {
+    const chart = myChartNode[i];
+    const img = chart.toDataURL("image/png", 1.0);
+    if (i > 0) {
+      pdf.addPage();
+    }
+    pdf.addImage(img, "PNG", 10, 10, 280, 150);
+  }
+
+  pdf.save("report.pdf");
+};
+
 document.addEventListener("DOMContentLoaded", function() {
   renderGraph();
+
+  const button = document.querySelector("#pdf-button");
+  button.addEventListener("click", pdfFunction);
 });
